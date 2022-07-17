@@ -8,7 +8,7 @@ import NewPoll from './components/New-Poll'
 import Leadership from './components/Leadership'
 import Navbar from './components/Navbar';
 import ErrorPage from './components/ErrorPage';
-
+import Poll from './Poll';
 function App(props) {
   useEffect(() => {
     props.dispatch(handleInitialData())
@@ -16,25 +16,26 @@ function App(props) {
 
   return (
     <div>
-    {props.loggedIn === !true ? (
-      <SignIn />
-    ) : (
-      <>
-        <Navbar />
-        <Routes>
-          <Route path="/login" element={<SignIn />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/leadership" element={<Leadership />} />
-          <Route path="/newPoll" element={<NewPoll />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </>
-    )}
-</div>
+      {props.loggedIn === !true ? (
+        <SignIn />
+      ) : (
+        <>
+          <Navbar />
+          <Routes>
+            <Route path="/login" element={<SignIn />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/leadership" element={<Leadership />} />
+            <Route path="/questions/:id" element={<Poll/>}/>
+            <Route path="/newPoll" element={<NewPoll />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </>
+      )}
+    </div>
   );
 }
 
-const mapStateToProps  =({ authedUser }) => {
+const mapStateToProps = ({ authedUser }) => {
   const loggedIn = authedUser === null ? false : true;
 
   return {
