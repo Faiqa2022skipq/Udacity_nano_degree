@@ -9,19 +9,14 @@ import {
 import { connect } from "react-redux";
 import { useState } from "react";
 import { handleLogout } from "../actions/authedUser";
-
 const Navbar = ({ dispatch, authedUserId, authedUserAvatar }) => {
-  const [isHovering, setIsHovering] = useState(false);
-
+const [isHovering, setIsHovering] = useState(false);
   const handleMouseOver = () => {
     setIsHovering(true);
   };
-
   const handleMouseOut = () => {
     setIsHovering(false);
   };
-
-
   return (
     <>
 
