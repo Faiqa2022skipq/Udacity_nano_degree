@@ -1,10 +1,9 @@
-
 let users = {
   sarahedo: {
     id: 'sarahedo',
     password:'password123',
     name: 'Sarah Edo',
-    avatarURL: "https://images.unsplash.com/profile-1441298803695-accd94000cac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=32&w=32&s=7cfe3b93750cb0c93e2f7caec08b5a41",
+    avatarURL: "https://th.bing.com/th/id/R.16138c08b5bd989171afeac321296cd2?rik=w9wLxTmhhGOX4w&riu=http%3a%2f%2fi.imgur.com%2f494dOKr.png&ehk=Yc6ec7rIZ5JWgz0T3tzgddMP2b3QOiiIj%2fBlMf6qDpU%3d&risl=&pid=ImgRaw&r=0",
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionOne',
@@ -17,7 +16,7 @@ let users = {
     id: 'tylermcginnis',
     password:'abc321',
     name: 'Tyler McGinnis',
-    avatarURL: "https://images.unsplash.com/profile-1441298803695-accd94000cac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=32&w=32&s=7cfe3b93750cb0c93e2f7caec08b5a41",
+    avatarURL: 'https://avatars1.githubusercontent.com/u/1173105?s=400&v=4',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -28,7 +27,7 @@ let users = {
     id: 'mtsamis',
     password:'xyz123',
     name: 'Mike Tsamis',
-    avatarURL: "https://images.unsplash.com/profile-1441298803695-accd94000cac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=32&w=32&s=7cfe3b93750cb0c93e2f7caec08b5a41",
+    avatarURL: 'https://th.bing.com/th/id/OIP.zmL-_wHAOhVM8gpFQXkWoAAAAA?pid=ImgDet&w=270&h=270&rs=1',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -40,14 +39,13 @@ let users = {
     id: 'zoshikanlu',
     password:'pass246',
     name: 'Zenobia Oshikanlu',
-    avatarURL: "https://images.unsplash.com/profile-1441298803695-accd94000cac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=32&w=32&s=7cfe3b93750cb0c93e2f7caec08b5a41",
+    avatarURL: 'https://th.bing.com/th/id/OIP.ldlbEra4ySmOmJpsIpXEfQAAAA?pid=ImgDet&w=270&h=270&rs=1',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
     },
     questions: [],
   }
 }
-
 let questions = {
   "8xf0y6ziyjabvozdd253nd": {
     id: '8xf0y6ziyjabvozdd253nd',
@@ -149,7 +147,7 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
-    author,
+    author: author.id,
     optionOne: {
       votes: [],
       text: optionOneText,
@@ -211,14 +209,4 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
       resolve(true)
     }, 500)
   })
-}
-
-export function getInitialData () {
-  return Promise.all([
-      _getUsers(),
-      _getQuestions(),
-  ]).then(([users, questions]) => ({
-      users,
-      questions,
-  }))
 }
