@@ -1,9 +1,7 @@
 import React from "react";
 import {
   Nav,
-  NavLogo,
   NavLink,
-  Bars,
   NavMenu,
   NavBtn,
   NavBtnLink,
@@ -23,59 +21,61 @@ const Navbar = ({ dispatch, authedUserId, authedUserAvatar }) => {
     setIsHovering(false);
   };
 
-  const logout = (e) => {
-    e.preventDefault();
-    dispatch(handleLogout());
-  };
+
   return (
     <>
+
       <Nav>
-        <NavLogo to="/">
-          Employee poll
-        </NavLogo>
-        <Bars />
+        <div style={{ marginLeft: '250px' }}>
 
-        <NavMenu>
-          <NavLink
-            to="/"
-            activestyle={{ color: 'black' }}
-            data-testid="home"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/leadership"
-            activestyle={{ color: 'black' }}
-            data-testid="leadership"
-            
-          >
-            Leaderboard
-          </NavLink>
-          <NavLink
-            to="/NewPoll"
-            activestyle={{ color: 'black' }}
-            data-testid = "new"
-          >
-            New Poll
-          </NavLink>
-          <span style={{ color: 'white' }} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}
 
-          >  {<img src={authedUserAvatar} alt="avatar" style={{
-            width: '40%',
-            height: '20%',
-            margin: 7,
-            borderRadius: 7
+          <NavMenu>
+            <NavLink
+              to="/"
+              activestyle={{ color: 'black' }}
+              data-testid="home"
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/leadership"
+              activestyle={{ color: 'black' }}
+              data-testid="leadership"
 
-          }} />}
-            {isHovering && ` ${authedUserId}`}
+            >
+              Leaderboard
+            </NavLink>
+            <NavLink
+              to="/NewPoll"
+              activestyle={{ color: 'black' }}
+              data-testid="new"
+            >
+              New Poll
+            </NavLink>
+            <span style={{ color: 'white' }} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}
 
-            {console.log(authedUserAvatar)}
-          </span>
-          <NavBtn>
-            <NavBtnLink to="/login" onClick={logout} activestyle={authedUserId} data-testid = "logout">Logout</NavBtnLink>
-          </NavBtn>
-        </NavMenu>
+            >  {<img src={authedUserAvatar} alt="avatar" style={{
+              width: '30px',
+              height: '20%',
+              margin: 7,
+              borderRadius: 7
+
+            }} />}
+              {isHovering && ` ${authedUserId}`}
+
+
+            </span>
+
+            <NavBtn>
+
+
+
+              <NavBtnLink to="/login" onClick={((e) => { dispatch(handleLogout(e)) })} activestyle={authedUserId} data-testid="logout" style={{ float: 'right' }}>Logout</NavBtnLink>
+            </NavBtn>
+          </NavMenu>
+        </div>
       </Nav>
+
     </>
   );
 };
