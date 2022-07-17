@@ -3,47 +3,49 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import { useState } from 'react';
-import Box from '@mui/material/Box';
+import {Navigate} from "react-router-dom";
+import {useState} from "react";
+import {handleLogin} from "../actions/authedUser";import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
+import { connect } from 'react-redux';
 const theme = createTheme();
 
-export default function SignIn() {
-  const [username, setUsername] = useState("sarahedo")
-    const [password, setPassword] = useState("password123")
+const SignIn = ({dispatch, loggedIn, users}) => {
+    const [username, setUsername] = useState("tylermcginnis");
+    const [password, setPassword] = useState("abc321");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+    if (loggedIn) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectUrl = urlParams.get('redirectTo');
+        return <Navigate to={redirectUrl ? redirectUrl : "/"}/>;        
+    }
+   
+    
+
+    const handleUsername = (e) => {
+        const value = e.target.value;
+        setUsername(value);
+    };
+
+    const handlePassword = (e) => {
+        const value = e.target.value;
+        setPassword(value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(handleLogin(username, password));
+        setUsername("");
+        setPassword("");
+    };
+
 
   return (
-    <ThemeProvider theme={theme}>
+    <div className="text-3xl font-bold mt-9" data-testid="siginPage">
+    <ThemeProvider theme={theme} >
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -58,9 +60,10 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+Signin
+           
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }} data-testid = "login">
             <TextField
               margin="normal"
               required
@@ -68,9 +71,11 @@ export default function SignIn() {
               id="email"
               label="Email Address"
               name="email"
+              data-testid="username"
               autoComplete="email"
               value = {username}
               autoFocus
+              onChange={handleUsername}
             />
             <TextField
               margin="normal"
@@ -80,15 +85,19 @@ export default function SignIn() {
               label="Password"
               type="password"
               id="password"
+              data-testid="password"
               autoComplete="current-password"
               value = {password}
+              onChange= {handlePassword}
             />
            
             <Button
               type="submit"
               fullWidth
+              data-testid="submit"
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+             
             >
               Sign In
             </Button>
@@ -98,5 +107,13 @@ export default function SignIn() {
        
       </Container>
     </ThemeProvider>
+    </div>
   );
 }
+const mapStateToProps = ({authedUser, users}) => ({
+    loggedIn: !!authedUser,
+    users: Object.values(users).sort((a, b) => Object.keys(b.answers).length - Object.keys(a.answers).length),
+
+});
+
+export default connect(mapStateToProps)(SignIn)
