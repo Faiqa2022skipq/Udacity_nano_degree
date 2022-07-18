@@ -8,27 +8,71 @@ Object {
       <nav
         class="sc-bczRLJ iA-dZku"
       >
-        <a
-          aria-current="page"
-          class="sc-gsnTZi hYaFZy active"
-          href="/"
+        <div
+          style="margin-left: 250px;"
         >
-          Employee poll
-        </a>
-        <svg
-          class="sc-hKMtZM bKFXhB"
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          viewBox="0 0 448 512"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-          />
-        </svg>
+          <div
+            class="sc-eCYdqJ xjNhp"
+          >
+            <a
+              activestyle="[object Object]"
+              aria-current="page"
+              class="sc-dkzDqf jyuNrD active"
+              data-testid="home"
+              href="/"
+            >
+              Home
+            </a>
+            <a
+              activestyle="[object Object]"
+              class="sc-dkzDqf jyuNrD"
+              data-testid="leadership"
+              href="/leadership"
+            >
+              Leaderboard
+            </a>
+            <a
+              activestyle="[object Object]"
+              class="sc-dkzDqf jyuNrD"
+              data-testid="new"
+              href="/NewPoll"
+            >
+              New Poll
+            </a>
+            <span
+              style="color: white;"
+            >
+                
+              <img
+                alt="avatar"
+                style="width: 30px; height: 20%; margin: 7px; border-radius: 7px;"
+              />
+            </span>
+            <nav
+              class="sc-jSMfEi elSapS"
+            >
+              <a
+                activestyle="tylermcginnis"
+                class="sc-gKXOVf kxQgf"
+                data-testid="logout"
+                href="/login"
+                style="float: right;"
+              >
+                Logout
+              </a>
+            </nav>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </body>,
+  "container": <div>
+    <nav
+      class="sc-bczRLJ iA-dZku"
+    >
+      <div
+        style="margin-left: 250px;"
+      >
         <div
           class="sc-eCYdqJ xjNhp"
         >
@@ -63,7 +107,7 @@ Object {
               
             <img
               alt="avatar"
-              style="width: 40%; height: 20%; margin: 7px; border-radius: 7px;"
+              style="width: 30px; height: 20%; margin: 7px; border-radius: 7px;"
             />
           </span>
           <nav
@@ -74,88 +118,12 @@ Object {
               class="sc-gKXOVf kxQgf"
               data-testid="logout"
               href="/login"
+              style="float: right;"
             >
               Logout
             </a>
           </nav>
         </div>
-      </nav>
-    </div>
-  </body>,
-  "container": <div>
-    <nav
-      class="sc-bczRLJ iA-dZku"
-    >
-      <a
-        aria-current="page"
-        class="sc-gsnTZi hYaFZy active"
-        href="/"
-      >
-        Employee poll
-      </a>
-      <svg
-        class="sc-hKMtZM bKFXhB"
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 448 512"
-        width="1em"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-        />
-      </svg>
-      <div
-        class="sc-eCYdqJ xjNhp"
-      >
-        <a
-          activestyle="[object Object]"
-          aria-current="page"
-          class="sc-dkzDqf jyuNrD active"
-          data-testid="home"
-          href="/"
-        >
-          Home
-        </a>
-        <a
-          activestyle="[object Object]"
-          class="sc-dkzDqf jyuNrD"
-          data-testid="leadership"
-          href="/leadership"
-        >
-          Leaderboard
-        </a>
-        <a
-          activestyle="[object Object]"
-          class="sc-dkzDqf jyuNrD"
-          data-testid="new"
-          href="/NewPoll"
-        >
-          New Poll
-        </a>
-        <span
-          style="color: white;"
-        >
-            
-          <img
-            alt="avatar"
-            style="width: 40%; height: 20%; margin: 7px; border-radius: 7px;"
-          />
-        </span>
-        <nav
-          class="sc-jSMfEi elSapS"
-        >
-          <a
-            activestyle="tylermcginnis"
-            class="sc-gKXOVf kxQgf"
-            data-testid="logout"
-            href="/login"
-          >
-            Logout
-          </a>
-        </nav>
       </div>
     </nav>
   </div>,

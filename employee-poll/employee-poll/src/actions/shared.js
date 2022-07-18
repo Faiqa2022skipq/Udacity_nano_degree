@@ -1,6 +1,6 @@
 import {receiveUsers} from "./users";
 import {receiveQuestions} from "./questions";
-import {getInitialData} from "../Services/Data";
+import {getInitialData} from "../Services/Data"
 
 export function handleInitialData() {
     return (dispatch) => {
@@ -10,3 +10,5 @@ export function handleInitialData() {
         });
     };
 }
+
+

@@ -55,7 +55,8 @@ const SignIn = ({ dispatch, loggedIn, users }) => {
                 id="email"
                 label="Email Address"
                 name="email"
-                data-testid="username"
+                inputProps={{ "data-testid": "username" }}
+
                 autoComplete="email"
                 value={username}
                 autoFocus
@@ -69,7 +70,7 @@ const SignIn = ({ dispatch, loggedIn, users }) => {
                 label="Password"
                 type="password"
                 id="password"
-                data-testid="password"
+                inputProps={{ "data-testid": "password" }}
                 autoComplete="current-password"
                 value={password}
                 onChange={((e) => setPassword(e.target.value))}
@@ -95,7 +96,7 @@ const SignIn = ({ dispatch, loggedIn, users }) => {
   );
 }
 const mapStateToProps = ({ authedUser, users }) => ({
-  loggedIn: !!authedUser,
+  loggedIn: authedUser,
   users: Object.values(users).sort((a, b) => Object.keys(b.answers).length - Object.keys(a.answers).length),
 
 });

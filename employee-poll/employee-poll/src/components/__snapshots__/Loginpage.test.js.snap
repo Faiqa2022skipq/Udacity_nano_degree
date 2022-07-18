@@ -33,7 +33,7 @@ Object {
             <h1
               class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
             >
-              Signin
+              SignIn
             </h1>
             <form
               class="MuiBox-root css-164r41r"
@@ -42,7 +42,6 @@ Object {
             >
               <div
                 class="MuiFormControl-root MuiFormControl-marginNormal MuiFormControl-fullWidth MuiTextField-root css-17vbkzs-MuiFormControl-root-MuiTextField-root"
-                data-testid="username"
               >
                 <label
                   class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled Mui-focused Mui-required css-1sumxir-MuiFormLabel-root-MuiInputLabel-root"
@@ -66,6 +65,7 @@ Object {
                     aria-invalid="false"
                     autocomplete="email"
                     class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                    data-testid="username"
                     id="email"
                     name="email"
                     required=""
@@ -90,7 +90,6 @@ Object {
               </div>
               <div
                 class="MuiFormControl-root MuiFormControl-marginNormal MuiFormControl-fullWidth MuiTextField-root css-17vbkzs-MuiFormControl-root-MuiTextField-root"
-                data-testid="password"
               >
                 <label
                   class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled Mui-required css-1sumxir-MuiFormLabel-root-MuiInputLabel-root"
@@ -114,6 +113,7 @@ Object {
                     aria-invalid="false"
                     autocomplete="current-password"
                     class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                    data-testid="password"
                     id="password"
                     name="password"
                     required=""
@@ -182,7 +182,7 @@ Object {
           <h1
             class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
           >
-            Signin
+            SignIn
           </h1>
           <form
             class="MuiBox-root css-164r41r"
@@ -191,7 +191,6 @@ Object {
           >
             <div
               class="MuiFormControl-root MuiFormControl-marginNormal MuiFormControl-fullWidth MuiTextField-root css-17vbkzs-MuiFormControl-root-MuiTextField-root"
-              data-testid="username"
             >
               <label
                 class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled Mui-focused Mui-required css-1sumxir-MuiFormLabel-root-MuiInputLabel-root"
@@ -215,6 +214,7 @@ Object {
                   aria-invalid="false"
                   autocomplete="email"
                   class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  data-testid="username"
                   id="email"
                   name="email"
                   required=""
@@ -239,7 +239,6 @@ Object {
             </div>
             <div
               class="MuiFormControl-root MuiFormControl-marginNormal MuiFormControl-fullWidth MuiTextField-root css-17vbkzs-MuiFormControl-root-MuiTextField-root"
-              data-testid="password"
             >
               <label
                 class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled Mui-required css-1sumxir-MuiFormLabel-root-MuiInputLabel-root"
@@ -263,6 +262,7 @@ Object {
                   aria-invalid="false"
                   autocomplete="current-password"
                   class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                  data-testid="password"
                   id="password"
                   name="password"
                   required=""

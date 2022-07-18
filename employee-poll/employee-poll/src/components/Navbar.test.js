@@ -26,6 +26,6 @@ describe("Navbar", () => {
         const nav_new = component.getByTestId('new')
         expect(nav_new).toBeInTheDocument()
         const nav_logout = component.getByTestId('logout')
-        expect(nav_home).toBeInTheDocument()
+        expect(nav_logout).toBeInTheDocument()
     });
 })

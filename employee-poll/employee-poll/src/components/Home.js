@@ -1,49 +1,26 @@
 import {connect} from "react-redux";
-import MediaCard from "./Card";
+import AnswerList from "./AnswerList";
+import Questions from "./Questions";
 
-const Dashboard = ({authedUser, questions, users}) => {
+const Home = () => {
 
-    const unanswered = (question) => (!question.optionOne.votes.includes(authedUser.id)
-        && !question.optionTwo.votes.includes(authedUser.id));
-
-    const answered = (question) => (question.optionOne.votes.includes(authedUser.id)
-        || question.optionTwo.votes.includes(authedUser.id));
+  
 
     return (
-        <div>
-            <h1 className="text-3xl font-bold mt-9" data-testid="heading">Dashboard</h1>
+        <div style={{
+            // display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          
+        }}>
+            <h1  >Dashboard</h1>
+            <hr/>
+           <Questions/>
 
-            <h2 className="text-2xl font-bold mt-6">New Questions</h2>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {questions
-                    .filter(unanswered)
-                    .map((question) => (
-                        <li key={question.id}>
-                            <MediaCard question={question} author={users[question.author]}/>
-                        </li>
-                    ))}
-            </ul>
-
-            <h2 className="text-2xl font-bold mt-6">Answered Questions</h2>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {questions
-                    .filter(answered)
-                    .map((question) => (
-                        <li key={question.id}>
-                            <MediaCard question={question} author={users[question.author]}/>
-                        </li>
-                    ))}
-            </ul>
+            <AnswerList/>
         </div>
     );
 }
 
-const mapStateToProps = ({authedUser, questions, users}) => ({
-    authedUser,
-    questions: Object.values(questions).sort(
-        (a, b) => b.timestamp - a.timestamp
-    ),
-    users,
-});
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect()(Home);

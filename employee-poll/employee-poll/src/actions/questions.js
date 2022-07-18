@@ -1,8 +1,8 @@
-import {_saveQuestion, _saveQuestionAnswer} from "../Services/Data";
+import {_saveQuestion1, _saveQuestionAnswer1} from "../Services/Data";
 import {addAnswerUser, addQuestionUser} from "./users";
 
-export const NEW_QUESTION = "NEW_QUESTION";
-export const NEW_ANSWER_QUESTION = "NEW_ANSWER_QUESTION";
+export const ADD_QUESTION = "ADD_QUESTION";
+export const ADD_ANSWER_QUESTION = "ADD_ANSWER_QUESTION";
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 
 export function receiveQuestions(questions) {
@@ -14,14 +14,14 @@ export function receiveQuestions(questions) {
 
 function addQuestion(question) {
     return {
-        type: NEW_QUESTION,
+        type: ADD_QUESTION,
         question,
     };
 }
 
 function addAnswerQuestion(author, qid, answer) {
     return {
-        type: NEW_ANSWER_QUESTION,
+        type: ADD_ANSWER_QUESTION,
         author,
         qid,
         answer,
@@ -32,15 +32,14 @@ export function handleAddQuestion(firstOption, secondOption) {
     return (dispatch, getState) => {
         const { authedUser } = getState();
 
-        return _saveQuestion(firstOption, secondOption, authedUser)
+        return _saveQuestion1(firstOption, secondOption, authedUser)
             .then((question) => {
                 dispatch(addQuestion(question));
                 dispatch(addQuestionUser(question))
+                alert("Successfully saved!")
             })
-            .catch((error) =>
-            {
-               
-                alert("error while inserting new question " , error)
+            .catch((error) =>{
+                alert("error while saving ", error)
             })
     };
 }
@@ -48,18 +47,10 @@ export function handleAddQuestion(firstOption, secondOption) {
 export function handleAddAnswer(questionId, answer) {
     return (dispatch, getState) => {
         const { authedUser } = getState();
-        return _saveQuestionAnswer(authedUser.id, questionId, answer)
+        return _saveQuestionAnswer1(authedUser.id, questionId, answer)
             .then(() => {
                 dispatch(addAnswerQuestion(authedUser.id, questionId, answer));
                 dispatch(addAnswerUser(authedUser.id, questionId, answer));
-             
-            })
-            .catch((error) =>
-            {
-               
-                alert("Error while answering to taht question" , error)
-            }
-
-            )
+            });
     };
 }
