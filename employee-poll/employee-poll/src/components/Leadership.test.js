@@ -10,8 +10,7 @@ describe("Navbar", () => {
       
 
         const component = render(
-            <Provider stor
-            e={store}>
+            <Provider store={store}>
                 <BrowserRouter>
                     <Leadership/>
                 </BrowserRouter>
