@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import { useState } from "react";
 import {Navigate, useNavigate, useParams} from "react-router-dom";
-import {handleAddAnswer} from "../src/actions/questions";
+import {handleAddAnswer} from "../actions/questions";
 const Poll = ({dispatch, authedUser, question, author}) => {
     const [isActiveOptionOne, setIsActiveOptionOne] = useState(false);
     const [isActiveOptionTwo, setIsActiveOptionTwp] = useState(false)

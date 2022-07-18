@@ -8,7 +8,7 @@ import NewPoll from './components/New-Poll'
 import Leadership from './components/Leadership'
 import Navbar from './components/Navbar';
 import ErrorPage from './components/ErrorPage';
-import Poll from './Poll';
+import Poll from './components/Poll';
 function App(props) {
   useEffect(() => {
     props.dispatch(handleInitialData())
