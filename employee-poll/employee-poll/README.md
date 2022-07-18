@@ -16,7 +16,7 @@ To  start the application
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.
-The `Data.js` file represents a fake database and methods that let you access the data. This files hav all the data and methd needed to run the application.
+The `Data.js` file represents a fake database and methods that let you access the data. This files have all the data and methd needed to run the application.
 
 ## Data
 
