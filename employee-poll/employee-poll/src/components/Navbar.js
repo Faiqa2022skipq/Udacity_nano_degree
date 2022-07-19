@@ -41,7 +41,7 @@ const [isHovering, setIsHovering] = useState(false);
               Leaderboard
             </NavLink>
             <NavLink
-              to="/NewPoll"
+              to="/add"
               activestyle={{ color: 'black' }}
               data-testid="new"
             >
