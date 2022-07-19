@@ -26,7 +26,7 @@ function App(props) {
             <Route path="/" element={<Home />} />
             <Route path="/leadership" element={<Leadership />} />
             <Route path="/questions/:id" element={<Poll/>}/>
-            <Route path="/newPoll" element={<NewPoll />} />
+            <Route path="/add" element={<NewPoll />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </>
