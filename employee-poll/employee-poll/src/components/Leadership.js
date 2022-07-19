@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { connect } from "react-redux";
-const Leadership = ({ users }) => {
+const Leadership = ({ users, sorted }) => {
 
     return (
         <>
@@ -23,13 +23,13 @@ const Leadership = ({ users }) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {users.map((row) => (
+                    {sorted.map(id => (
                             <TableRow
-                                key={row.name}
+                                key={id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell component="th" scope="row">
-                                    <img src={row.avatarURL} data-testid="avatar" className="rounded-full" alt="user" height={40} width={40}
+                                    <img src={users[id].avatarURL} alt={users[id].name} data-testid="avatar" className="rounded-full" height={40} width={40}
                                         style={{
                                             width: '8%',
                                             height: '8%',
@@ -39,11 +39,11 @@ const Leadership = ({ users }) => {
                                         }}
                                     />
 
-                                    {`${row.name}`}
+{users[id].name}
                                 </TableCell>
 
-                                <TableCell align="right" >{Object.keys(row.answers).length}</TableCell>
-                                <TableCell align="right" >{row.questions.length} </TableCell>
+                                <TableCell align="right" >{Object.keys(users[id].answers).length}</TableCell>
+                                <TableCell align="right" >{Object.keys(users[id].questions).length} </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -52,7 +52,18 @@ const Leadership = ({ users }) => {
         </>
     );
 }
-const mapStateToProps = ({ users }) => ({
-    users: Object.values(users).sort((a, b) => Object.keys(b.answers).length - Object.keys(a.answers).length),
-});
+
+const mapStateToProps = ({users}) => (
+    {
+        sorted: Object.keys(users).sort(
+            (a,b) => {
+                const sumB = Object.keys(users[b].answers).length + Object.keys(users[b].questions).length
+                const sumA = Object.keys(users[a].answers).length + Object.keys(users[a].questions).length
+                return sumB - sumA
+            }
+        ),
+        users: users,
+       
+    }
+)
 export default connect(mapStateToProps)(Leadership);

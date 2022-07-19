@@ -35,7 +35,7 @@ Object {
               activestyle="[object Object]"
               class="sc-dkzDqf jyuNrD"
               data-testid="new"
-              href="/NewPoll"
+              href="/add"
             >
               New Poll
             </a>
@@ -97,7 +97,7 @@ Object {
             activestyle="[object Object]"
             class="sc-dkzDqf jyuNrD"
             data-testid="new"
-            href="/NewPoll"
+            href="/add"
           >
             New Poll
           </a>

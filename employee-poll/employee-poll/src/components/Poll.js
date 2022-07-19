@@ -2,6 +2,8 @@ import {connect} from "react-redux";
 import { useState } from "react";
 import {Navigate, useNavigate, useParams} from "react-router-dom";
 import {handleAddAnswer} from "../actions/questions";
+import "./Poll.css";
+
 const Poll = ({dispatch, authedUser, question, author}) => {
     const [isActiveOptionOne, setIsActiveOptionOne] = useState(false);
     const [isActiveOptionTwo, setIsActiveOptionTwp] = useState(false)
@@ -58,7 +60,7 @@ const Poll = ({dispatch, authedUser, question, author}) => {
                 
                
                         className={ (voteForOptionOne ? "bg-lime-400" : "")}>
-                    <div className={voteForOptionOne ? "chosen" : ""}>
+                    <div className={voteForOptionOne ? "voted" : ""}>
                         <p >{question.optionOne.text}</p>
                         {!voted &&
                         <p >Click</p>
@@ -69,7 +71,7 @@ const Poll = ({dispatch, authedUser, question, author}) => {
                     </div>
                 </button>
 
-                <button onClick={optionTwo} disabled={voted} style = {{marginLeft:'5px'}}
+                <button onClick={optionTwo} disabled={voted} style = {{marginLeft:'5px', width:"20%"}}
                 
                         className={ (voteForOptionTwo ? "bg-lime-400" : "")}>
                     <p >{question.optionTwo.text}</p>
@@ -100,3 +102,4 @@ const mapStateToProps = ({authedUser, users, questions}) => {
 };
 
 export default connect(mapStateToProps)(Poll);
+

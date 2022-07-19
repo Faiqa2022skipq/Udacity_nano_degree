@@ -14,8 +14,8 @@ describe("_saveQuestionAnswer", () => {
 })
 
 
-describe("_saveQuestionAnswer", () => {
-    it(' return true  when all  data is passed', async() => {
+describe("_saveQuestion", () => {
+    it(' return true  when incorrect  data is passed', async() => {
         const q = {
             optionOneText : 'select javascript', 
             optionTwoText: 'Select react js',
@@ -40,14 +40,14 @@ it(' return error when incorrect data is passed', async() => {
     await expect(_saveQuestion(q)).rejects.toEqual('Please provide optionOneText, optionTwoText, and author')
 })
 })
-describe("_saveQuestion", () => {
+describe("_saveQuestionAnswer", () => {
 it(' return false   when incorrect  data is passed', async() => {
     const q = {
-        author : 'sarahedo', 
+        
         optionTwoText: 'Select react js',
         author: 'sarahedo'
     }
  
-    await expect(_saveQuestion(q)).rejects.toEqual('Please provide optionOneText, optionTwoText, and author')
+    await expect(_saveQuestionAnswer(q)).rejects.toEqual('Please provide authedUser, qid, and answer')
 
 })})
