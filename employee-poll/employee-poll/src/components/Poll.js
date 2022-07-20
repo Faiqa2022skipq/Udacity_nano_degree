@@ -4,13 +4,15 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { handleAddAnswer } from "../actions/questions";
 import "./Poll.css";
 
-const Poll = ({ dispatch, authedUser, question, author }) => {
+const Poll = ({ dispatch, authedUser, questions,users }) => {
     const navigate = useNavigate();
+  const id = useParams().id;
+        const question = Object.values(questions).find((question) => question.id === id);
+        const author = Object.values(users).find((user) => user.id === question.author);
+ 
     const [textOne, setTextOne] = useState(" ");
     const [textTwo, setTextTwo] = useState(" ")
-    if (!question ) {
-        return <Navigate to="*" />;
-    }
+    
    
     
 
@@ -55,6 +57,9 @@ const Poll = ({ dispatch, authedUser, question, author }) => {
                 return "";
         }
     };
+    if (!authedUser || !question || !author) {
+        return <Navigate to="/404"/>;
+    }
 
     return (
         <div><h1>Poll by {author.id}</h1>
@@ -98,13 +103,19 @@ const Poll = ({ dispatch, authedUser, question, author }) => {
 };
 
 const mapStateToProps = ({ authedUser, users, questions }) => {
-    try {
-        const question = Object.values(questions).find((question) => question.id === useParams().id);
-        const author = Object.values(users).find((user) => user.id === question.author);
-        return { authedUser, question, author };
-    } catch (e) {
-        return <Navigate to="*" />;
+    // try {
+    //     const question = Object.values(questions).find((question) => question.id === useParams().id);
+    //     const author = Object.values(users).find((user) => user.id === question.author);
+    //     return { authedUser, question, author };
+    // } catch (e) {
+    //     return <Navigate to="*" />;
+    // }
+    return {
+        authedUser, 
+        questions, 
+        users
     }
+
 };
 
 export default connect(mapStateToProps)(Poll);
