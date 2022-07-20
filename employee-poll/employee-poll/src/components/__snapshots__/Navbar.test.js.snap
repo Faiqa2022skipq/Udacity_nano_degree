@@ -27,7 +27,7 @@ Object {
               activestyle="[object Object]"
               class="sc-dkzDqf jyuNrD"
               data-testid="leadership"
-              href="/leadership"
+              href="/leaderboard"
             >
               Leaderboard
             </a>
@@ -89,7 +89,7 @@ Object {
             activestyle="[object Object]"
             class="sc-dkzDqf jyuNrD"
             data-testid="leadership"
-            href="/leadership"
+            href="/leaderboard"
           >
             Leaderboard
           </a>

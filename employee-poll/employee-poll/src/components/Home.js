@@ -3,9 +3,20 @@ import Card1 from './Card'
 import AnswerList from "./AnswerList";
 import Questions from "./Questions";
 import { useState } from "react";
+import { Button } from "bootstrap";
 
 const Home = () => {
    
+    const[show,setShow]=useState(true);
+    const[changeText,setChangeText]=useState(" Show Answer List");
+    const handleChange=()=>{
+        setShow(!show);
+        if(show)
+        {
+            setChangeText("Show Answered List")
+        }
+        setChangeText("Show Un Answered List")
+    }
 
     return (
         <>
@@ -14,14 +25,26 @@ const Home = () => {
                 justifyContent: 'center',
 
             }}>
+<h1  >Dashboard</h1>
+               
 
+    
+   
+         
+      
+  <button onClick={handleChange} style = {{
+backgroundColor: 'gray',
+  color: 'white',
+  font: '20px',
+  padding: '10px 60px',
+  border: '5px',
+  margin: '10px 0px',
+  cursor: 'pointer'
+}}>{changeText}</button>
 
-
-                <h1  >Dashboard</h1>
-                <hr />
-
-                <Questions />
-<AnswerList/>
+                
+  {show ? <Questions/ > : <AnswerList/>}
+               
 
                
             </div>
