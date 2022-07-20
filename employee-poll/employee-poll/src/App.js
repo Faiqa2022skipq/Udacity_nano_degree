@@ -22,11 +22,11 @@ function App(props) {
         <>
           <Navbar />
           <Routes>
-            <Route path="/login" element={<SignIn />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/leadership" element={<Leadership />} />
-            <Route path="/questions/:id" element={<Poll/>}/>
-            <Route path="/add" element={<NewPoll />} />
+            <Route exact path="/login" element={<SignIn />} />
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/leaderboard" element={<Leadership />} />
+            <Route exact path="/questions/:id" element={<Poll/>}/>
+            <Route exact path="/add" element={<NewPoll />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </>

@@ -1,3 +1,4 @@
-.voted {
+.selected {
     background-color: #4ddD1D;
+    content: "Voted ";
 }

@@ -12,7 +12,9 @@ const AnswerList = ({ authedUser, questions, users }) => {
                     .filter(answered)
                     .map((question) => (
                         <p key={question.id}>
+                            <div>
                             <Card1 question={question} author={users[question.author]} />
+                            </div>
                         </p>
                     ))}
             </>

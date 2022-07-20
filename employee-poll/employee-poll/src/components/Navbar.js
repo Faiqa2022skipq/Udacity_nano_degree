@@ -33,7 +33,7 @@ const [isHovering, setIsHovering] = useState(false);
               Home
             </NavLink>
             <NavLink
-              to="/leadership"
+              to="/leaderboard"
               activestyle={{ color: 'black' }}
               data-testid="leadership"
 

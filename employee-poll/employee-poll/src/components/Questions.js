@@ -9,6 +9,7 @@ const Questions = ({ authedUser, questions, users }) => {
         <div >
             <h2 >New Questions</h2>
             <>
+            
                 {questions
                     .filter(question)
                     .map((question) => (
@@ -16,6 +17,7 @@ const Questions = ({ authedUser, questions, users }) => {
                             <Card1 question={question} author={users[question.author]} />
                         </p>
                     ))}
+            
             </>
         </div>
     )

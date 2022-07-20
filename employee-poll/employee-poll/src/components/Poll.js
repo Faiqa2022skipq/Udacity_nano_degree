@@ -1,34 +1,46 @@
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import { useState } from "react";
-import {Navigate, useNavigate, useParams} from "react-router-dom";
-import {handleAddAnswer} from "../actions/questions";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { handleAddAnswer } from "../actions/questions";
 import "./Poll.css";
 
-const Poll = ({dispatch, authedUser, question, author}) => {
-    const [isActiveOptionOne, setIsActiveOptionOne] = useState(false);
-    const [isActiveOptionTwo, setIsActiveOptionTwp] = useState(false)
+const Poll = ({ dispatch, authedUser, question, author }) => {
+    const [textOne, setTextOne] = useState(" ");
+    const [textTwo, setTextTwo] = useState(" ")
     const navigate = useNavigate();
     if (!authedUser || !question || !author) {
-        alert("Not Authorized !")
-        return <Navigate to="*"/>;
+        return <Navigate to="*" />;
     }
 
     const voteForOptionOne = question.optionOne.votes.includes(authedUser.id);
+    const ques1 = question.optionOne.text;
+    const quest2 = question.optionTwo.text;
     const voteForOptionTwo = question.optionTwo.votes.includes(authedUser.id);
     const voted = voteForOptionOne || voteForOptionTwo;
 
     const optionOne = (e) => {
         e.preventDefault();
         dispatch(handleAddAnswer(question.id, "optionOne"));
+        const voteOneInfo = question.optionOne.votes.length + 1;
+        const voteOneInfo_ = votedPercentage("optionOne", question);
+        const finalVoteOne = "Vote: " + "  " + voteOneInfo + "\n" + "selected Option:  " + ques1;
+        alert(finalVoteOne)
+        setTextOne(finalVoteOne)
         navigate("/");
-        setIsActiveOptionOne(!isActiveOptionOne)
+
+
     };
 
     const optionTwo = (e) => {
         e.preventDefault();
         dispatch(handleAddAnswer(question.id, "optionTwo"));
+        const voteTwoInfo = question.optionTwo.votes.length + 1;
+        const voteTwoInfo_ = votedPercentage("optionTwo", question);
+        const finalVoteTwo = "Vote: " + " " + voteTwoInfo + "\n" + "selected Option:  " + quest2;
+        setTextTwo(finalVoteTwo)
+        alert(finalVoteTwo)
         navigate("/");
-        setIsActiveOptionTwp(!isActiveOptionTwo)
+
     };
 
     const votedPercentage = (option, question) => {
@@ -46,41 +58,34 @@ const Poll = ({dispatch, authedUser, question, author}) => {
     return (
         <div><h1>Poll by {author.id}</h1>
             <div>
-                <img src={author.avatarURL} alt="author"  style = {{width:'150px'}}/>
+                <img src={author.avatarURL} alt="author" style={{ width: '150px' }} />
             </div>
             <div >
                 <h2 >Would you rather?</h2>
             </div>
             <div >
-                <button onClick={optionOne} disabled={voted} 
-                 style={{
-                    backgroundColor: isActiveOptionOne ? 'salmon' : '',
-                    color: isActiveOptionOne ? 'white' : '',
-                  }}
-                
-               
-                        className={ (voteForOptionOne ? "bg-lime-400" : "")}>
-                    <div className={voteForOptionOne ? "voted" : ""}>
-                        <p >{question.optionOne.text}</p>
-                        {!voted &&
-                        <p >Click</p>
-                        }
-                        {voted &&
-                        <p >Votes: {question.optionOne.votes.length} ({votedPercentage("optionOne", question)}) </p>
-                        }
-                    </div>
-                </button>
-
-                <button onClick={optionTwo} disabled={voted} style = {{marginLeft:'5px', width:"20%"}}
-                
-                        className={ (voteForOptionTwo ? "bg-lime-400" : "")}>
-                    <p >{question.optionTwo.text}</p>
+                <button onClick={optionOne} disabled={voted}
+                    className={(voteForOptionOne ? "selected" : "")}>
+                    <p >{question.optionOne.text}</p>
                     {!voted &&
-                    <p >Click </p>
+                        <p >Click <br /> {textOne}</p>
                     }
                     {voted &&
-                    <p >Votes: {question.optionTwo.votes.length} ({votedPercentage("optionTwo", question)})  </p>
+                        <p >Votes: {question.optionOne.votes.length} ({votedPercentage("optionOne", question)}) </p>
                     }
+                </button>
+
+                <button onClick={optionTwo} disabled={voted} style={{ marginLeft: '5px' }}
+
+                    className={voteForOptionTwo ? "selected" : ""}>
+                    <p >{question.optionTwo.text}</p>
+                    {!voted &&
+                        <p >Click  <br /> {textTwo}</p>
+                    }
+                    {voted &&
+                        <p >Votes: {question.optionTwo.votes.length} ({votedPercentage("optionTwo", question)})  </p>
+                    }
+
                 </button>
 
 
@@ -91,15 +96,14 @@ const Poll = ({dispatch, authedUser, question, author}) => {
     );
 };
 
-const mapStateToProps = ({authedUser, users, questions}) => {
+const mapStateToProps = ({ authedUser, users, questions }) => {
     try {
         const question = Object.values(questions).find((question) => question.id === useParams().id);
         const author = Object.values(users).find((user) => user.id === question.author);
-        return {authedUser, question, author};
+        return { authedUser, question, author };
     } catch (e) {
-        return <Navigate to="*"/>;
+        return <Navigate to="*" />;
     }
 };
 
 export default connect(mapStateToProps)(Poll);
-
