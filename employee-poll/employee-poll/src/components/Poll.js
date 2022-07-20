@@ -7,12 +7,17 @@ import "./Poll.css";
 const Poll = ({ dispatch, authedUser, questions,users }) => {
     const navigate = useNavigate();
   const id = useParams().id;
+  const [textOne, setTextOne] = useState(" ");
+  const [textTwo, setTextTwo] = useState(" ")
+  
         const question = Object.values(questions).find((question) => question.id === id);
+        if(!question)
+        {
+            return <Navigate to = {"*/"}/>
+        }
         const author = Object.values(users).find((user) => user.id === question.author);
  
-    const [textOne, setTextOne] = useState(" ");
-    const [textTwo, setTextTwo] = useState(" ")
-    
+   
    
     
 
@@ -58,9 +63,7 @@ const Poll = ({ dispatch, authedUser, questions,users }) => {
                 return "";
         }
     };
-    if ( !author || !authedUser) {
-       <Navigate to="/*"/>;
-    }
+    
  
 
     return (
@@ -118,7 +121,7 @@ const mapStateToProps = ({ authedUser, users, questions }) => {
         users
     }}
     catch (e) {
-            return <Navigate to="*" />;
+            return <Navigate to="/*" />;
         }
 };
 

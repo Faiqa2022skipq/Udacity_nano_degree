@@ -7,9 +7,13 @@ import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBBtn }
 const Card1 = ({ question, author }) => {
   const navigate = useNavigate();
   const handlePoll = () => {
+    if(question !== undefined)
     navigate("questions/" + question.id);
+    navigate("/*")
   };
   return (
+    <Link to={'questions/' + question.id}>
+
     <div className='row' md={8} style={{
       alignItems: 'center',
       justifyContent: 'center',
@@ -22,7 +26,7 @@ const Card1 = ({ question, author }) => {
           <MDBCardTitle>   {question.author}</MDBCardTitle>
           <MDBCardText>
             {new Date(question.timestamp).toDateString()}        </MDBCardText>
-          <button onClick={handlePoll}> Show </button>
+          <button > Show </button>
         </MDBCardBody>
       </MDBCard>
     </div>
@@ -30,7 +34,7 @@ const Card1 = ({ question, author }) => {
 </div>
 
 
-
+</Link>
 
   );
 }
