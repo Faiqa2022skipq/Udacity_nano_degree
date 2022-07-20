@@ -8,7 +8,7 @@ const Poll = ({ dispatch, authedUser, question, author }) => {
     const [textOne, setTextOne] = useState(" ");
     const [textTwo, setTextTwo] = useState(" ")
     const navigate = useNavigate();
-    if (!authedUser || !question || !author) {
+    if (!question ) {
         return <Navigate to="*" />;
     }
 
