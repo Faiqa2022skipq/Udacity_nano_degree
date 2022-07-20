@@ -13,7 +13,7 @@ const Poll = ({ dispatch, authedUser, questions,users }) => {
         const question = Object.values(questions).find((question) => question.id === id);
         if(!question)
         {
-            return <Navigate to = {"*/"}/>
+            return <Navigate to = {"/*"}/>
         }
         const author = Object.values(users).find((user) => user.id === question.author);
  
