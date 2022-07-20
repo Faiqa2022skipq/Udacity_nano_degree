@@ -10,37 +10,28 @@ const Card1 = ({ question, author }) => {
     navigate("questions/" + question.id);
   };
   return (
+    <div className='row' md={8} style={{
+      alignItems: 'center',
+      justifyContent: 'center',
+      display:'flex'
+    }}>
+      <div className='column'>
+      <MDBCard  >
+        <MDBCardImage src={author?.avatarURL} style={{ width: '80px' }} position='top' alt='...' />
+        <MDBCardBody>
+          <MDBCardTitle>   {question.author}</MDBCardTitle>
+          <MDBCardText>
+            {new Date(question.timestamp).toDateString()}        </MDBCardText>
+          <button onClick={handlePoll}> Show </button>
+        </MDBCardBody>
+      </MDBCard>
+    </div>
 
-    
-      <div className="row" md={2} style={{
-        alignItems: 'center',
-        justifyContent: 'center',
-        display: 'flex'
-      }}>
-        
-     
-
-
-       
-       
-       
-            <MDBCard     >
-              <MDBCardImage src={author?.avatarURL} style={{ width: '50px' }} position='top' alt='...' />
-              <MDBCardBody>
-                <MDBCardTitle>   {question.author}</MDBCardTitle>
-                <MDBCardText>
-                  {new Date(question.timestamp).toDateString()}        </MDBCardText>
-                <button onClick={handlePoll}> Show </button>
-              </MDBCardBody>
-            </MDBCard>
-           
-            </div>
-            
-         
+</div>
 
 
 
-  
+
   );
 }
 export default connect()(Card1);

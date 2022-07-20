@@ -31,9 +31,6 @@ const Poll = ({ dispatch, authedUser, questions,users }) => {
         const finalVoteOne = "selected:  " + ques1 + "\n" +   "Vote for selected: "  + voteOneInfo + "/" + numberVotesTotal + "\n" + "Not Selected " + quest2 + "\n" + "Votes for Not Selected: "   + voteTwoInfo + "/" + numberVotesTotal;
         alert(finalVoteOne)
         setTextOne(finalVoteOne)
-        // navigate("/");
-
-
     };
 
     const optionTwo = (e) => {
@@ -61,9 +58,10 @@ const Poll = ({ dispatch, authedUser, questions,users }) => {
                 return "";
         }
     };
-    if (!authedUser || !question || !author) {
-        return <Navigate to="/*"/>;
+    if ( !author || !authedUser) {
+       <Navigate to="/*"/>;
     }
+ 
 
     return (
         <div><h1>Poll by {author.id}</h1>
