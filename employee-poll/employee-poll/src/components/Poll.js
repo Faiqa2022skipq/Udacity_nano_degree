@@ -29,7 +29,7 @@ const Poll = ({ dispatch, authedUser, questions,users }) => {
         const finalVoteOne = "Vote: " + "  " + voteOneInfo + "\n" + "selected Option:  " + ques1;
         alert(finalVoteOne)
         setTextOne(finalVoteOne)
-        navigate("/");
+        // navigate("/");
 
 
     };
@@ -42,7 +42,7 @@ const Poll = ({ dispatch, authedUser, questions,users }) => {
         const finalVoteTwo = "Vote: " + " " + voteTwoInfo + "\n" + "selected Option:  " + quest2;
         setTextTwo(finalVoteTwo)
         alert(finalVoteTwo)
-        navigate("/");
+        // navigate("/");
 
     };
 
