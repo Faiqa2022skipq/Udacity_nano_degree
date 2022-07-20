@@ -5,12 +5,14 @@ import { handleAddAnswer } from "../actions/questions";
 import "./Poll.css";
 
 const Poll = ({ dispatch, authedUser, question, author }) => {
+    const navigate = useNavigate();
     const [textOne, setTextOne] = useState(" ");
     const [textTwo, setTextTwo] = useState(" ")
-    const navigate = useNavigate();
     if (!question ) {
         return <Navigate to="*" />;
     }
+   
+    
 
     const voteForOptionOne = question.optionOne.votes.includes(authedUser.id);
     const ques1 = question.optionOne.text;
@@ -22,7 +24,6 @@ const Poll = ({ dispatch, authedUser, question, author }) => {
         e.preventDefault();
         dispatch(handleAddAnswer(question.id, "optionOne"));
         const voteOneInfo = question.optionOne.votes.length + 1;
-        const voteOneInfo_ = votedPercentage("optionOne", question);
         const finalVoteOne = "Vote: " + "  " + voteOneInfo + "\n" + "selected Option:  " + ques1;
         alert(finalVoteOne)
         setTextOne(finalVoteOne)

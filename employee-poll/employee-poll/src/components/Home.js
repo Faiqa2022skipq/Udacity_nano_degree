@@ -5,8 +5,7 @@ import Questions from "./Questions";
 import { useState } from "react";
 
 const Home = () => {
-    //  const [switchForm, setSwitchForm] = useState(false);
-
+   
 
     return (
         <>

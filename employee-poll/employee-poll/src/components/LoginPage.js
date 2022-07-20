@@ -19,7 +19,8 @@ const SignIn = ({ dispatch, loggedIn, users }) => {
   if (loggedIn) {
     const urlParams = new URLSearchParams(window.location.search);
     const redirectUrl = urlParams.get('redirectTo');
-    return <Navigate to={redirectUrl ? redirectUrl : "/"} />;
+    console.log("Redirect URL " + redirectUrl + " " + urlParams)
+    return <Navigate to={redirectUrl ? "redirectUrl" : "/"} />;
   }
   const handleSubmit = (e) => {
     e.preventDefault();
