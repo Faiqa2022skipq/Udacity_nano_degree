@@ -17,6 +17,7 @@ const Poll = ({ dispatch, authedUser, questions,users }) => {
     
 
     const voteForOptionOne = question.optionOne.votes.includes(authedUser.id);
+    const numberVotesTotal = question.optionOne.votes.length + question.optionTwo.votes.length +1;
     const ques1 = question.optionOne.text;
     const quest2 = question.optionTwo.text;
     const voteForOptionTwo = question.optionTwo.votes.includes(authedUser.id);
@@ -26,7 +27,8 @@ const Poll = ({ dispatch, authedUser, questions,users }) => {
         e.preventDefault();
         dispatch(handleAddAnswer(question.id, "optionOne"));
         const voteOneInfo = question.optionOne.votes.length + 1;
-        const finalVoteOne = "Vote: " + "  " + voteOneInfo + "\n" + "selected Option:  " + ques1;
+        const voteTwoInfo = question.optionTwo.votes.length  
+        const finalVoteOne = "selected:  " + ques1 + "\n" +   "Vote for selected: "  + voteOneInfo + "/" + numberVotesTotal + "\n" + "Not Selected " + quest2 + "\n" + "Votes for Not Selected: "   + voteTwoInfo + "/" + numberVotesTotal;
         alert(finalVoteOne)
         setTextOne(finalVoteOne)
         // navigate("/");
@@ -37,9 +39,11 @@ const Poll = ({ dispatch, authedUser, questions,users }) => {
     const optionTwo = (e) => {
         e.preventDefault();
         dispatch(handleAddAnswer(question.id, "optionTwo"));
+        const voteOneInfo = question.optionOne.votes.length;
+
         const voteTwoInfo = question.optionTwo.votes.length + 1;
         const voteTwoInfo_ = votedPercentage("optionTwo", question);
-        const finalVoteTwo = "Vote: " + " " + voteTwoInfo + "\n" + "selected Option:  " + quest2;
+        const finalVoteTwo =  "selected:  " + quest2 + "\n" +   "Vote for selected: "  + voteTwoInfo + "/" + numberVotesTotal + "\n" + "Not Selected " + ques1 + "\n" + "Votes for Not Selected: "   + voteOneInfo + "/" + numberVotesTotal;
         setTextTwo(finalVoteTwo)
         alert(finalVoteTwo)
         // navigate("/");
