@@ -13,9 +13,9 @@ const Questions = ({ authedUser, questions, users }) => {
                 {questions
                     .filter(question)
                     .map((question) => (
-                        <p key={question.id}>
+                        <div key={question.id}  style = {{marginBottom:'5px'}}>
                             <Card1 question={question} author={users[question.author]} />
-                        </p>
+                        </div>
                     ))}
             
             </>
