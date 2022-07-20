@@ -7,6 +7,7 @@ const Questions = ({ authedUser, questions, users }) => {
         && !question.optionTwo.votes.includes(authedUser.id));
     return (
         <div >
+            <hr />
             <h2 >Un Answered Questions</h2>
             <>
             
