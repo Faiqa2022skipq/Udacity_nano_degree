@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import Card1 from './Card'
 import AnswerList from "./AnswerList";
 import Questions from "./Questions";
 import { useState } from "react";
@@ -21,9 +22,9 @@ const Home = () => {
                 <hr />
 
                 <Questions />
+<AnswerList/>
 
-
-                <AnswerList />
+               
             </div>
         </>
     );
