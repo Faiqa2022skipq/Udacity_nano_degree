@@ -110,12 +110,14 @@ const mapStateToProps = ({ authedUser, users, questions }) => {
     // } catch (e) {
     //     return <Navigate to="*" />;
     // }
-    return {
+    try{return {
         authedUser, 
         questions, 
         users
-    }
-
+    }}
+    catch (e) {
+            return <Navigate to="*" />;
+        }
 };
 
 export default connect(mapStateToProps)(Poll);
