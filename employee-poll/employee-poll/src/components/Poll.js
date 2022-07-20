@@ -58,7 +58,7 @@ const Poll = ({ dispatch, authedUser, questions,users }) => {
         }
     };
     if (!authedUser || !question || !author) {
-        return <Navigate to="/404"/>;
+        return <Navigate to="/*"/>;
     }
 
     return (
